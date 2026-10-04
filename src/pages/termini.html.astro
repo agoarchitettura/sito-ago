@@ -1,0 +1,7 @@
+---
+import Base from '../layouts/Base.astro';
+import corpo from '../data/termini.html?raw';
+---
+<Base titolo="Termini di servizio" descrizione="Termini di servizio di Ago Architettura STP S.r.l.">
+  <div class="documento"><Fragment set:html={corpo} /></div>
+</Base>

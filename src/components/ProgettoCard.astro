@@ -1,0 +1,12 @@
+---
+import { u } from '../lib/url';
+import Foto from './Foto.astro';
+const { p, grande = false } = Astro.props;
+const d = p.data;
+---
+<a class="card" href={u(`/progetti/${p.id}/`)} data-categoria={d.categoria}>
+  <div class="foto reale"><Foto img={d.copertina} alt={d.titolo} sizes="(min-width: 56rem) 33vw, 100vw" zoom={false} /><span class="chip cat">{d.categoria}</span><span class="chip st">{d.stato}</span></div>
+  <h3>{d.titolo}</h3>
+  <p class="meta"><span>{d.luogo}</span><span>{d.anni}</span></p>
+  <span class="vai">Scheda del progetto →</span>
+</a>

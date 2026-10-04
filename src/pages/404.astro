@@ -1,0 +1,7 @@
+---
+import { u } from '../lib/url';
+import Base from '../layouts/Base.astro';
+---
+<Base titolo="Pagina non trovata">
+  <div class="wrap"><div class="titolo-pagina"><h1>Pagina non trovata</h1><p class="corpo">L'indirizzo non esiste o è stato spostato. <a href={u('/')}>Torna alla home</a> oppure <a href={u('/progetti/')}>guarda i progetti</a>.</p></div></div>
+</Base>

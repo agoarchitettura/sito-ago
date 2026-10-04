@@ -1,0 +1,78 @@
+---
+import { u, base } from '../lib/url';
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Foto from '../components/Foto.astro';
+import ProgettoCard from '../components/ProgettoCard.astro';
+import { leggi } from '../lib/dati';
+const h = leggi('home');
+const progetti = (await getCollection('progetti')).sort((a, b) => a.data.ordine - b.data.ordine);
+const evidenza = progetti.filter((p) => p.data.in_evidenza).slice(0, 5);
+const diapositive = progetti.flatMap((p) => p.data.carosello.map((img) => ({ img, p })));
+---
+<Base home={true} descrizione="Società di progettazione di architetti a Macerata: progetto, restauro e direzione lavori per enti pubblici e committenti privati. Insieme dal 2002.">
+  <section class="hero" aria-roledescription="carosello" aria-label="Progetti dello studio">
+    <div class="slides" id="slides" data-base={base}>
+      {diapositive.map((d, i) => (
+        <div class={`slide${i === 0 ? ' on' : ''}`} data-titolo={d.p.data.titolo} data-cat={d.p.data.categoria} data-slug={d.p.id}>
+          <Foto img={d.img} alt={`${d.p.data.titolo}, ${d.p.data.luogo}`} sizes="100vw" larghezze={[800, 1200, 1600, 2200]} caricamento={i === 0 ? 'eager' : 'lazy'} zoom={false} />
+        </div>
+      ))}
+    </div>
+    <div class="wrap">
+      <h1>Ago ergo sum</h1>
+      <p class="sotto">{h.sottotitolo}</p>
+      <div class="pulsanti"><a class="btn pieno" href={u('/progetti/')}>Vedi i progetti</a><a class="btn" href={u('/contatti/')}>Contattaci</a></div>
+      <div class="cr"><span id="didascalia"></span>
+        {diapositive.length > 1 && <div class="frecce"><button type="button" id="prec" aria-label="Immagine precedente">←</button> <button type="button" id="succ" aria-label="Immagine successiva">→</button></div>}
+        {diapositive.length > 1 && <div class="punti" id="punti">{diapositive.map((_, i) => <button type="button" aria-label={`Immagine ${i + 1}`}></button>)}</div>}
+      </div>
+    </div>
+  </section>
+  <div class="riga-fatti"><div class="wrap">{h.fatti}</div></div>
+  <div class="wrap">
+    <div class="sezione">
+      <p class="etichetta">Di cosa ci occupiamo</p>
+      <div class="tre aree">
+        {h.aree.map((a: any) => <div><h3>{a.titolo}</h3><p>{a.testo}</p></div>)}
+      </div>
+      <p style="margin-top:1.5rem"><a href={u('/servizi/')}>Tutti i servizi →</a></p>
+    </div>
+    <div class="sezione">
+      <p class="etichetta">Progetti</p>
+      <div class="progetti">
+        {evidenza.map((p) => <ProgettoCard p={p} />)}
+        <a class="card tutti" href={u('/progetti/')}>Tutti i progetti →</a>
+      </div>
+    </div>
+    <div class="sezione">
+      <h2>{h.chiusura_titolo}</h2>
+      <p class="corpo largo" style="margin:1rem 0 1.5rem">{h.chiusura_testo}</p>
+      <a class="btn sul-chiaro pieno" href={u('/contatti/')}>Contattaci</a>
+    </div>
+  </div>
+  <script is:inline>
+    (function(){
+      var cs=document.getElementById('slides'); if(!cs) return;
+      var s=[].slice.call(cs.querySelectorAll('.slide')), pn=document.getElementById('punti'), dida=document.getElementById('didascalia');
+      var cur=0, timer=null;
+      function mostra(n){
+        cur=(n+s.length)%s.length;
+        s.forEach(function(el,i){el.classList.toggle('on',i===cur);});
+        if(pn)[].forEach.call(pn.children,function(b,i){if(i===cur)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current');});
+        var d=s[cur].dataset; dida.innerHTML='<a href={u('/progetti/'+d.slug+'/')}>'+d.titolo+' · '+d.cat+'</a>';
+      }
+      function fermo(){if(timer){clearInterval(timer);timer=null;}}
+      function parti(){fermo(); if(s.length<2||matchMedia('(prefers-reduced-motion: reduce)').matches)return; timer=setInterval(function(){mostra(cur+1)},6500);}
+      if(s.length>1){
+        // la prima immagine cambia a ogni visita, così non resta sempre la stessa
+        try{var k=parseInt(sessionStorage.getItem('ago-slide')||'-1',10); k=(isNaN(k)?-1:k)+1; sessionStorage.setItem('ago-slide',String(k)); cur=k%s.length;}catch(e){cur=Math.floor(Math.random()*s.length);}
+      }
+      mostra(cur); parti();
+      if(pn)pn.addEventListener('click',function(e){var i=[].indexOf.call(pn.children,e.target.closest('button'));if(i>=0){mostra(i);parti();}});
+      var p=document.getElementById('prec'), n=document.getElementById('succ');
+      if(p)p.onclick=function(){mostra(cur-1);parti();}; if(n)n.onclick=function(){mostra(cur+1);parti();};
+      var h=document.querySelector('.hero'); h.addEventListener('mouseenter',fermo); h.addEventListener('mouseleave',parti); h.addEventListener('focusin',fermo); h.addEventListener('focusout',parti);
+    })();
+  </script>
+</Base>

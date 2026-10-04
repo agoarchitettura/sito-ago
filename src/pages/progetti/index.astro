@@ -1,0 +1,41 @@
+---
+import { u } from '../../lib/url';
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Foto from '../../components/Foto.astro';
+import ProgettoCard from '../../components/ProgettoCard.astro';
+const progetti = (await getCollection('progetti')).sort((a, b) => a.data.ordine - b.data.ordine);
+const primo = progetti.find((p) => p.data.in_evidenza) ?? progetti[0];
+const resto = progetti.filter((p) => p !== primo);
+const categorie = [...new Set(progetti.map((p) => p.data.categoria))];
+---
+<Base titolo="Progetti" descrizione="Una scelta dei lavori di Ago Architettura: restauro, nuova edificazione, architettura rurale, spazi pubblici.">
+  <div class="wrap">
+    <div class="titolo-pagina"><p class="etichetta">Progetti</p><h1>Opere e progetti</h1><p class="corpo largo">Una scelta dei lavori dello studio. Ogni scheda racconta l'intervento, chi ci ha lavorato e come è andata.</p></div>
+    {primo && (
+      <a class="in-evidenza" href={u(`/progetti/${primo.id}/`)}>
+        <div class="foto reale"><Foto img={primo.data.copertina} alt={primo.data.titolo} sizes="(min-width: 56rem) 60vw, 100vw" zoom={false} caricamento="eager" /><span class="chip cat">{primo.data.categoria}</span><span class="chip st">{primo.data.stato}</span></div>
+        <div><p class="etichetta">In evidenza</p><h2>{primo.data.titolo}</h2><p class="corpo">{primo.data.sintesi}</p>
+          <p class="meta"><span>{primo.data.committente}</span><span>{primo.data.luogo}</span><span>{primo.data.anni}</span></p><span class="vai">Scheda del progetto →</span></div>
+      </a>
+    )}
+    {categorie.length > 1 && (
+      <div class="filtri" role="group" aria-label="Filtra per tipo" id="filtri">
+        <button type="button" aria-pressed="true" data-c="Tutti">Tutti</button>
+        {categorie.map((c) => <button type="button" aria-pressed="false" data-c={c}>{c}</button>)}
+      </div>
+    )}
+    <div class="progetti" id="elenco">{resto.map((p) => <ProgettoCard p={p} />)}</div>
+  </div>
+  <script is:inline>
+    (function(){
+      var f=document.getElementById('filtri'); if(!f) return;
+      var schede=[].slice.call(document.querySelectorAll('#elenco .card'));
+      f.addEventListener('click',function(e){
+        var b=e.target.closest('button'); if(!b) return; var c=b.dataset.c;
+        [].forEach.call(f.children,function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+        schede.forEach(function(s){s.hidden=!(c==='Tutti'||s.dataset.categoria===c);});
+      });
+    })();
+  </script>
+</Base>

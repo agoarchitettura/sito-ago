@@ -1,0 +1,53 @@
+---
+import { u } from '../lib/url';
+import Base from '../layouts/Base.astro';
+import { leggi } from '../lib/dati';
+const c = leggi('contatti'); const s = leggi('sito');
+const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT ?? '';
+---
+<Base titolo="Contatti" descrizione="Contatti di Ago Architettura: via Roma 211, Macerata. Telefono, email, PEC e modulo di richiesta.">
+  <div class="wrap">
+    <div class="titolo-pagina"><p class="etichetta">Contatti</p><h1>{c.titolo}</h1><p class="corpo largo">{c.introduzione}</p></div>
+    <div class="due sezione" style="border-top:0;padding-top:1rem">
+      <dl class="dati">
+        <div><dt>Studio</dt><dd>{s.indirizzo}<br>{s.cap} {s.citta}</dd></div>
+        <div><dt>Telefono</dt><dd><a href={`tel:${s.telefono_internazionale.replace(/\s/g, '')}`}>{s.telefono}</a></dd></div>
+        <div><dt>Email</dt><dd><a href={`mailto:${s.email}`}>{s.email}</a></dd></div>
+        <div><dt>PEC</dt><dd><a href={`mailto:${s.pec}`}>{s.pec}</a></dd></div>
+        <div><dt>Mappa</dt><dd><a href="https://www.openstreetmap.org/search?query=via%20Roma%20211%20Macerata" rel="noopener">Apri su OpenStreetMap</a></dd></div>
+      </dl>
+      {endpoint ? (
+        <form id="modulo" data-endpoint={endpoint} novalidate>
+          <div><label for="f-nome">Nome e cognome</label><input id="f-nome" name="nome" autocomplete="name" required></div>
+          <div><label for="f-ente">Ente o società (facoltativo)</label><input id="f-ente" name="ente" autocomplete="organization"></div>
+          <div><label for="f-mail">Email</label><input id="f-mail" name="email" type="email" autocomplete="email" required></div>
+          <div><label for="f-tel">Telefono (facoltativo)</label><input id="f-tel" name="telefono" type="tel" autocomplete="tel"></div>
+          <div><label for="f-msg">Di cosa avete bisogno?</label><textarea id="f-msg" name="messaggio" rows="5" required></textarea></div>
+          <input type="text" name="sito_web" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+          <label class="check" for="f-priv"><input type="checkbox" id="f-priv" name="privacy" required><span>Acconsento al trattamento dei dati per essere ricontattato. Usiamo i dati solo per rispondervi. <a href={u('/privacy.html')}>Informativa privacy</a>.</span></label>
+          <div><button class="btn sul-chiaro pieno" type="submit">Invia</button></div>
+          <div class="esito" id="esito" hidden></div>
+        </form>
+      ) : (
+        <div class="esito">Il modulo di richiesta sarà attivo a breve. Nel frattempo scriveteci a <a href={`mailto:${s.email}`}>{s.email}</a> o chiamateci allo {s.telefono}.</div>
+      )}
+    </div>
+    <div class="sezione" id="lavora-con-noi">
+      <p class="etichetta">Lavora con noi</p>
+      <p class="corpo">{c.lavora_con_noi}</p>
+    </div>
+  </div>
+  <script is:inline>
+    (function(){
+      var f=document.getElementById('modulo'); if(!f) return; var e=document.getElementById('esito');
+      f.addEventListener('submit',function(ev){
+        ev.preventDefault();
+        if(!f.checkValidity()){e.hidden=false;e.textContent='Compilate nome, email, messaggio e consenso.';return;}
+        var dati=new FormData(f);
+        fetch(f.dataset.endpoint,{method:'POST',body:dati,headers:{Accept:'application/json'}}).then(function(r){
+          e.hidden=false; if(r.ok){e.textContent='Grazie, abbiamo ricevuto la richiesta e vi risponderemo presto.';f.reset();} else {e.textContent='Invio non riuscito. Scriveteci a info@ago.archi.';}
+        }).catch(function(){e.hidden=false;e.textContent='Invio non riuscito. Scriveteci a info@ago.archi.';});
+      });
+    })();
+  </script>
+</Base>

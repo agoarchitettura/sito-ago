@@ -1,0 +1,40 @@
+titolo: Dal primo studio al collaudo
+introduzione: "Ago Architettura segue l'intero processo di un'opera: studio di fattibilità, progetto, direzione lavori, sicurezza di cantiere e collaudo. Lavoriamo per enti pubblici e committenti privati, con un gruppo di architetti e con ingegneri strutturisti, geologi e altri specialisti scelti caso per caso."
+aree:
+  - etichetta: "1"
+    titolo: Opere pubbliche
+    testo:
+      - Progetto di fattibilità tecnico-economica, progetto esecutivo, direzione lavori, coordinamento della sicurezza e collaudo, per comuni e altri enti.
+    elenco:
+      - Restauro, consolidamento e miglioramento sismico di edifici storici e monumentali
+      - Arredo urbano e illuminazione degli spazi pubblici
+      - Impianti sportivi
+      - Edilizia residenziale pubblica
+  - etichetta: "2"
+    titolo: Restauro e patrimonio storico
+    testo:
+      - "Restauro e consolidamento di edifici sottoposti a tutela: palazzi, ville storiche, chiese ed edifici ecclesiastici. Riparazione e miglioramento sismico di edifici danneggiati dai terremoti."
+      - "Per gli enti: consulenza sulla tutela dei beni storico-culturali. Dopo un evento sismico: rilievo del danno, valutazione dell'agibilità, schede AeDES e FAST."
+    elenco: []
+  - etichetta: "3"
+    titolo: Nuova edificazione e interventi privati
+    testo:
+      - Progetto e direzione lavori di nuovi edifici residenziali, ricettivi e rurali, di ristrutturazioni e di interni. Seguiamo l'intero iter autorizzativo, dal progetto all'agibilità, anche quando si usano i bonus fiscali.
+    elenco: []
+  - etichetta: Competenze
+    titolo: Specialistiche
+    testo: []
+    elenco:
+      - Progettazione energetica e attestati di prestazione energetica
+      - Requisiti acustici passivi degli involucri
+      - Protocollo ITACA e sostenibilità energetico-ambientale
+      - Coordinamento della sicurezza in progettazione e in esecuzione
+      - Relazioni paesaggistiche e ambientali
+      - Progettazione in BIM, con le figure di BIM manager, coordinator e specialist all'interno dello studio
+      - Piani di recupero di iniziativa pubblica e privata
+  - etichetta: Consulenze
+    titolo: Per enti e imprese
+    testo: []
+    elenco:
+      - "Pubbliche amministrazioni: tutela dei beni culturali, ricerca di finanziamenti e partecipazione a bandi per programmi complessi, impiantistica sportiva anche per il CONI"
+      - "Imprese edili: consulenza tecnica e contabile"

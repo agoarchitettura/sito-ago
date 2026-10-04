@@ -1,0 +1,54 @@
+---
+import { u } from '../../lib/url';
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Foto from '../../components/Foto.astro';
+import struttura from '../../components/grafico-struttura.html?raw';
+import energia from '../../components/grafico-energia.html?raw';
+
+export async function getStaticPaths() {
+  const tutti = (await getCollection('progetti')).sort((a, b) => a.data.ordine - b.data.ordine);
+  return tutti.map((p, i) => ({
+    params: { slug: p.id },
+    props: { p, prec: tutti[(i + tutti.length - 1) % tutti.length], succ: tutti[(i + 1) % tutti.length] },
+  }));
+}
+const { p, prec, succ } = Astro.props;
+const d = p.data;
+const grafici: Record<string, string> = { struttura, energia };
+---
+<Base titolo={d.titolo} descrizione={d.sintesi}>
+  <section class="scheda-hero">
+    <div class="foto reale"><Foto img={d.apertura} alt={d.titolo} sizes="100vw" larghezze={[800, 1200, 1600, 2200]} caricamento="eager" zoom={false} /></div>
+    <div class="wrap">
+      <p class="etichetta" style="color:var(--su-scuro)">{d.categoria}</p><h1>{d.titolo}</h1><p style="margin:0;color:var(--su-scuro)">{d.sottotitolo}</p>
+    </div>
+  </section>
+  <div class="wrap">
+    <dl class="matrice">{d.dati.map((v) => <div><dt>{v.voce}</dt><dd>{v.valore}</dd></div>)}</dl>
+    {d.sezioni.map((s, k) => (
+      <>
+        <div class="sez">
+          <div><p class="etichetta">{k === 0 ? 'Il progetto' : ''}</p><h2>{s.titolo}</h2></div>
+          <div class="testo">
+            {s.testo.map((t) => <p>{t}</p>)}
+            {s.schizzi.length > 0 && <div class={`schizzi${s.schizzi.length > 2 ? ' figure-tec' : ''}`}>{s.schizzi.map((f) => <figure><Foto img={f.img} alt={f.didascalia} didascalia={f.didascalia} sizes="(min-width: 56rem) 60vw, 100vw" /><figcaption>{f.didascalia}</figcaption></figure>)}</div>}
+            {s.figure.length > 0 && <div class="schizzi figure-tec">{s.figure.map((f) => <figure><Foto img={f.img} alt={f.didascalia} didascalia={f.didascalia} sizes="(min-width: 56rem) 30vw, 100vw" /><figcaption>{f.didascalia}</figcaption></figure>)}</div>}
+            {s.tabella && <dl class="tabella">{s.tabella.map((r) => <div><dt>{r.voce}</dt><dd>{r.valore}</dd></div>)}</dl>}
+            {s.nota_tabella && <p class="nota-tab">{s.nota_tabella}</p>}
+            {s.inglese && <details class="en"><summary>English</summary>{s.inglese.map((t) => <p>{t}</p>)}</details>}
+          </div>
+        </div>
+        {s.tuttoschermo.map((f) => <figure class="fb"><Foto img={f.img} alt={f.didascalia} didascalia={f.didascalia} sizes="100vw" larghezze={[800, 1200, 1600, 2200]} /><figcaption>{f.didascalia}</figcaption></figure>)}
+        {s.extra && s.extra !== 'cronologia' && <div class="extra"><Fragment set:html={grafici[s.extra]} /></div>}
+        {s.extra === 'cronologia' && d.cronologia.length > 0 && (
+          <div class="extra"><div class="grafico cronologia"><p class="etichetta">Il cantiere nel tempo</p>
+            <ol class="cron">{d.cronologia.map((c) => <li><span class="data">{c.data}</span>{c.img && <Foto img={c.img} alt={c.titolo} didascalia={`${c.titolo}: ${c.testo}`} sizes="(min-width: 56rem) 30vw, 100vw" />}<h3>{c.titolo}</h3><p>{c.testo}</p></li>)}</ol></div></div>
+        )}
+      </>
+    ))}
+    {d.disegni.length > 0 && <div class="sezione" style="border-top:1px solid var(--linea)"><p class="etichetta">Disegni di progetto</p><div class="disegni">{d.disegni.map((f) => <figure><Foto img={f.img} alt={f.didascalia} didascalia={f.didascalia} sizes="(min-width: 56rem) 45vw, 100vw" larghezze={[600, 1000, 1600, 2000]} /><figcaption>{f.didascalia}</figcaption></figure>)}</div></div>}
+    {d.galleria.length > 0 && <div class="sezione" style="border-top:1px solid var(--linea)"><p class="etichetta">Immagini</p><div class="galleria">{d.galleria.map((f) => <figure><Foto img={f.img} alt={f.didascalia} didascalia={f.didascalia} sizes="(min-width: 56rem) 25vw, (min-width: 36rem) 50vw, 100vw" /><figcaption>{f.didascalia}</figcaption></figure>)}</div></div>}
+    <div class="prec-succ"><a href={u(`/progetti/${prec.id}/`)}>← {prec.data.titolo}</a><a href={u(`/progetti/${succ.id}/`)}>{succ.data.titolo} →</a></div>
+  </div>
+</Base>

@@ -1,0 +1,11 @@
+---
+import { u } from '../lib/url';
+import { leggi } from '../lib/dati';
+const s = leggi('sito');
+---
+<footer class="piede"><div class="wrap">
+  <div class="motto">{s.motto}</div>
+  {s.ragione_sociale} — {s.indirizzo}, {s.cap} {s.citta} ({s.provincia}) — P.IVA/C.F. {s.piva} — REA {s.rea}<br>
+  {s.ordine}<br>
+  <a href={u('/privacy.html')}>Privacy</a> · <a href={u('/termini.html')}>Termini di servizio</a> · <a href={u('/contatti/#lavora-con-noi')}>Lavora con noi</a>
+</div></footer>

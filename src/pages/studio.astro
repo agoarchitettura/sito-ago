@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import { leggi } from '../lib/dati';
+const s = leggi('studio'); const sito = leggi('sito');
+---
+<Base titolo="Studio" descrizione="Ago Architettura: sette architetti a Macerata, insieme dal 2002. Le persone, il metodo di lavoro.">
+  <div class="wrap">
+    <div class="titolo-pagina"><p class="etichetta">Studio</p><h1>{s.titolo}</h1><p class="corpo largo">{s.introduzione}</p></div>
+    <div class="sezione" style="border-top:0;padding-top:1rem">
+      <p class="etichetta">Le persone</p>
+      <div class="soci">{s.soci.map((p: any) => <div class="socio"><h3>{p.nome}</h3><p>{p.testo}</p></div>)}</div>
+      <p class="corpo" style="margin-top:1.75rem;font-size:.875rem">{s.nota_soci}</p>
+    </div>
+    <div class="sezione">
+      <p class="etichetta">Come lavoriamo</p>
+      <p class="corpo" style="margin-bottom:2rem">{s.metodo_introduzione}</p>
+      <div class="passi">{s.metodo.map((m: any) => <div><h3>{m.titolo}</h3><p>{m.testo}</p></div>)}</div>
+    </div>
+    <div class="sezione">
+      <p class="etichetta">Cultura del progetto</p>
+      <p class="corpo">{s.cultura}</p>
+      {sito.diario_url && <p style="margin-top:1rem"><a class="btn sul-chiaro" href={sito.diario_url} rel="noopener">Leggi il diario →</a></p>}
+    </div>
+  </div>
+</Base>

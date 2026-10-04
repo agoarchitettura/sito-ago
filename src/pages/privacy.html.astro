@@ -1,0 +1,7 @@
+---
+import Base from '../layouts/Base.astro';
+import corpo from '../data/privacy.html?raw';
+---
+<Base titolo="Informativa privacy" descrizione="Informativa privacy di Ago Architettura STP S.r.l.">
+  <div class="documento"><Fragment set:html={corpo} /></div>
+</Base>

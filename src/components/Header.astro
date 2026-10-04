@@ -1,0 +1,14 @@
+---
+import { u } from '../lib/url';
+import logo from './logo-monogramma.html?raw';
+import { leggi } from '../lib/dati';
+const sito = leggi('sito');
+const corrente = Astro.url.pathname;
+const voci = [['Progetti', '/progetti/'], ['Servizi', '/servizi/'], ['Studio', '/studio/'], ['Contatti', '/contatti/']];
+---
+<header class="top"><div class="wrap">
+  <a class="marchio" href={u('/')} aria-label={`${sito.nome}, home`}><Fragment set:html={logo} /><span>{sito.nome}</span></a>
+  <nav class="menu" aria-label="Principale">
+    {voci.map(([t, h]) => <a href={u(h)} aria-current={corrente.startsWith(u(h)) ? 'page' : undefined}>{t}</a>)}
+  </nav>
+</div></header>

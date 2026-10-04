@@ -1,0 +1,14 @@
+---
+import { Image, getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+interface Props {
+  img: ImageMetadata; alt: string; sizes?: string; larghezze?: number[];
+  caricamento?: 'eager' | 'lazy'; zoom?: boolean; class?: string; didascalia?: string;
+}
+const { img, alt, sizes = '100vw', larghezze = [480, 800, 1200, 1600], caricamento = 'lazy', zoom = true, class: cls } = Astro.props;
+const grande = zoom ? await getImage({ src: img, width: Math.min(2200, img.width), format: 'webp', quality: 80 }) : null;
+const w = larghezze.filter((x) => x <= img.width);
+if (!w.length) w.push(img.width);
+---
+<Image src={img} alt={alt} widths={w} sizes={sizes} format="webp" quality={72} loading={caricamento} decoding="async" class={cls}
+  data-zoom={zoom ? grande?.src : undefined} data-cap={zoom ? Astro.props.didascalia ?? alt : undefined} />

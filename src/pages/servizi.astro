@@ -1,0 +1,20 @@
+---
+import { u } from '../lib/url';
+import Base from '../layouts/Base.astro';
+import { leggi } from '../lib/dati';
+const s = leggi('servizi');
+---
+<Base titolo="Servizi" descrizione="Progetto di fattibilità, esecutivo, direzione lavori, sicurezza e collaudo per opere pubbliche, restauro e nuova edificazione.">
+  <div class="wrap">
+    <div class="titolo-pagina"><p class="etichetta">Servizi</p><h1>{s.titolo}</h1><p class="corpo largo">{s.introduzione}</p></div>
+    {s.aree.map((a: any) => (
+      <div class="area due"><div><p class="etichetta">{a.etichetta}</p><h2>{a.titolo}</h2></div>
+        <div>
+          {a.testo.map((t: string, i: number) => <p class="corpo" style={i ? 'margin-top:1rem' : ''}>{t}</p>)}
+          {a.elenco.length > 0 && <ul class="elenco" style={a.testo.length ? 'margin-top:1.25rem' : ''}>{a.elenco.map((x: string) => <li>{x}</li>)}</ul>}
+        </div>
+      </div>
+    ))}
+    <div class="area due"><div></div><div><a class="btn sul-chiaro pieno" href={u('/contatti/')}>Contattaci</a></div></div>
+  </div>
+</Base>
