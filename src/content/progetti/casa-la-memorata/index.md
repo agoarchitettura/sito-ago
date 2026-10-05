@@ -26,7 +26,7 @@ dati:
 - voce: Ruolo dello studio
   valore: Progetto architettonico e direzione lavori
 - voce: Con
-  valore: ing. Chiara Antolini (strutture) · arch. Gabriele Cardarelli (sicurezza)
+  valore: ing. Chiara Antolini (strutture)
 - voce: Intervento
   valore: demolizione e ricostruzione con ampliamento (Piano Casa)
 - voce: Volume

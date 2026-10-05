@@ -26,7 +26,7 @@ dati:
 - voce: Ruolo dello studio
   valore: Progetto e direzione lavori
 - voce: Con
-  valore: arch. Gabriele Cardarelli · ing. Stefano Fortuni (strutture)
+  valore: ing. Stefano Fortuni (strutture)
 - voce: Impresa
   valore: Koinonia Cooperativa Sociale Onlus
 - voce: Importo dei lavori

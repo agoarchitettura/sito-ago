@@ -25,8 +25,6 @@ dati:
   valore: Privato
 - voce: Ruolo dello studio
   valore: Studio di fattibilità
-- voce: Con
-  valore: arch. Emanuele Zippilli · arch. Gabriele Cardarelli
 - voce: Nuovo edificio
   valore: circa 90 m² di superficie utile, tre volumi
 - voce: Piscina
