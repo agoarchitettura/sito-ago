@@ -44,8 +44,8 @@ sezioni:
     didascalia: Lo schizzo iniziale
 - titolo: Cosa c'era
   testo:
-  - Sul crinale, accanto alla casa colonica, un piccolo annesso agricolo di circa 9,60 × 6,60 m era usato come deposito attrezzi e forno. Murature di mattoni e pietra, due livelli, tetto in coppi e un campanile a vela. Era in avanzato degrado, aggravato dal sisma: murature scomposte e fuori piombo, solai in legno sottodimensionati, campanile prossimo al crollo.
-  - Il progetto ha scelto di non lasciarlo cadere. Demolizione e ricostruzione con ampliamento, ai sensi del Piano Casa regionale, per farne una piccola casa che continui a parlare con il luogo. È l'approccio new rural, ma alla scala più piccola: nessun edificio nuovo che imita il vecchio, ma la stessa grammatica (volumi accostati, logge aggiunte, laterizio, coppi) riletta per una casa di oggi.
+  - "Sul crinale, accanto alla casa colonica, un piccolo annesso agricolo di circa 9,60 × 6,60 m era usato come deposito attrezzi e forno. Murature di mattoni e pietra, due livelli, tetto in coppi e un campanile a vela. Era in avanzato degrado, aggravato dal sisma: murature scomposte e fuori piombo, solai in legno sottodimensionati, campanile prossimo al crollo."
+  - "Il progetto ha scelto di non lasciarlo cadere. Demolizione e ricostruzione con ampliamento, ai sensi del Piano Casa regionale, per farne una piccola casa che continui a parlare con il luogo. È l'approccio new rural, ma alla scala più piccola: nessun edificio nuovo che imita il vecchio, ma la stessa grammatica (volumi accostati, logge aggiunte, laterizio, coppi) riletta per una casa di oggi."
 - titolo: Due capanne affiancate
   testo:
   - Il volume nuovo è un rettangolo di circa 9,6 × 10 m, ruotato di 8° rispetto all'impianto originario. Visivamente si divide in due corpi affiancati, ciascuno con la sua copertura a capanna. Quello a nord è più piccolo, quello a sud più ampio. Così il tetto non è più una sola falda uniforme e l'edificio ritrova il passo irregolare delle costruzioni rurali, cresciute per aggiunte.
@@ -55,8 +55,8 @@ sezioni:
     didascalia: Il campanile a vela, le due capanne e le logge sul fronte a valle
 - titolo: Il laterizio e il paesaggio
   testo:
-  - I materiali sono quelli della tradizione locale: mattone faccia vista (listelli di laterizio di 4 cm sul blocco termico), intonaco in colori chiari, coppi, soglie e pavimenti esterni in cotto. Le logge hanno sportelloni e frangisole a doghe in legno. Il timpano di mattoni a spina di pesce disegna in modo nuovo un tema antico.
-  - La tecnica è di oggi: telai in cemento armato e travi di copertura in legno lamellare, platea su pali, isolamento in lana di roccia, serramenti in alluminio a taglio termico, pannelli fotovoltaici (3,6 kW) integrati nel manto in coppi sulle falde a sud. La pompa di calore sta lontano dall'edificio, in un piccolo vano in muratura, perché gli impianti non compaiano nell'immagine della casa. L'edificio rispetta il protocollo ITACA Marche con un punteggio di 3,35.
+  - "I materiali sono quelli della tradizione locale: mattone faccia vista (listelli di laterizio di 4 cm sul blocco termico), intonaco in colori chiari, coppi, soglie e pavimenti esterni in cotto. Le logge hanno sportelloni e frangisole a doghe in legno. Il timpano di mattoni a spina di pesce disegna in modo nuovo un tema antico."
+  - "La tecnica è di oggi: telai in cemento armato e travi di copertura in legno lamellare, platea su pali, isolamento in lana di roccia, serramenti in alluminio a taglio termico, pannelli fotovoltaici (3,6 kW) integrati nel manto in coppi sulle falde a sud. La pompa di calore sta lontano dall'edificio, in un piccolo vano in muratura, perché gli impianti non compaiano nell'immagine della casa. L'edificio rispetta il protocollo ITACA Marche con un punteggio di 3,35."
   - Il giardino è fatto di piccole sistemazioni del terreno, con la terra scavata in cantiere. I muretti e le cordonature sono in laterizio o pietra arenaria locale.
   tuttoschermo:
   - img: ./img/mm-04.jpg
