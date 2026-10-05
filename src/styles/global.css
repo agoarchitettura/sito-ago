@@ -220,3 +220,39 @@ details.en p{max-width:44rem;color:var(--grafite)}
 .schizzi figure img{width:100%;height:auto}
 .fb img{position:static}
 main{display:block}
+
+/* ---- correzioni 05/10 ---- */
+.etichetta:empty{display:none}
+/* le immagini non devono ereditare l'altezza dall'attributo HTML: altrimenti si ritagliano in strisce verticali */
+.galleria img,.figure-tec img,.cron img,.schizzi img,.disegni img{height:auto}
+/* dati di sintesi: elenco semplice */
+.matrice{display:block;margin:2rem 0 1rem;border-top:1px solid var(--linea);max-width:50rem}
+.matrice div{display:grid;grid-template-columns:minmax(0,10rem) minmax(0,1fr);gap:1rem;padding:.65rem 0;border-bottom:1px solid var(--linea)}
+.matrice dt{font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grafite);padding-top:.2rem}
+.matrice dd{margin:0;font-size:.9375rem;line-height:1.5}
+@media(max-width:36rem){.matrice div{grid-template-columns:minmax(0,6.5rem) minmax(0,1fr);gap:.75rem}}
+/* grafico struttura */
+.grafico.struttura{display:grid;grid-template-columns:minmax(0,1fr);gap:1.25rem 2.5rem;max-width:56rem}
+.grafico.struttura .etichetta{grid-column:1/-1;margin:0}
+.grafico.struttura .gsvg svg{max-width:26rem;margin:0}
+.grafico .gp{fill:var(--carta)}
+.grafico.struttura .leg{margin:0;padding:0;list-style:none;counter-reset:l}
+.grafico.struttura .leg li{counter-increment:l;position:relative;padding:.7rem 0 .7rem 2.4rem;border-top:1px solid var(--linea);font-size:.9375rem;color:var(--grafite);margin:0}
+.grafico.struttura .leg li:last-child{border-bottom:1px solid var(--linea)}
+.grafico.struttura .leg li::before{content:counter(l);position:absolute;left:0;top:.65rem;width:1.5rem;height:1.5rem;border-radius:50%;background:var(--inchiostro);color:#fff;font-family:var(--mono);font-size:.75rem;display:flex;align-items:center;justify-content:center}
+.grafico.struttura .leg strong{display:block;font-family:var(--titoli);font-weight:500;font-size:1.1rem;color:var(--inchiostro)}
+.grafico.struttura .gcap{font-size:.8125rem;color:var(--grafite);margin:1rem 0 0}
+@media(min-width:48rem){.grafico.struttura{grid-template-columns:minmax(0,24rem) minmax(0,1fr);align-items:center}}
+/* grafico energia */
+.grafico.energia{max-width:56rem}
+.flusso{display:grid;grid-template-columns:minmax(0,1fr);gap:.75rem;padding:1.1rem 0;border-top:1px solid var(--linea)}
+@media(min-width:48rem){.flusso{grid-template-columns:9rem minmax(0,1fr);gap:1.5rem;align-items:center}}
+.fh h4{font-family:var(--titoli);font-weight:500;font-size:1.25rem;margin:0}
+.fh p{margin:.15rem 0 0;font-size:.8125rem;color:var(--grafite)}
+.nodi{display:flex;align-items:stretch;gap:.5rem;flex-wrap:wrap}
+.nodo{flex:1 1 9.5rem;min-width:0;border:1px solid var(--inchiostro);background:var(--carta2);padding:.75rem .85rem}
+.nodo strong{display:block;font-family:var(--titoli);font-weight:500;font-size:1.1rem;line-height:1.2}
+.nodo span{display:block;margin-top:.2rem;font-size:.8125rem;line-height:1.4;color:var(--grafite)}
+.freccia{align-self:center;color:var(--ottone);font-family:var(--mono);font-size:1.1rem}
+@media(max-width:47.99rem){.freccia{flex-basis:100%;text-align:center;transform:rotate(90deg);line-height:1;height:1rem}}
+.grafico.energia figcaption{border-top:1px solid var(--linea);padding-top:.8rem;margin-top:0}

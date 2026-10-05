@@ -15,14 +15,14 @@ carosello:
 - ./img/sg-hero-dsc.jpg
 - ./img/sg-fb-chiesetta.jpg
 dati:
-- voce: Committente
-  valore: Fraternità San Carlo Borromeo
 - voce: Luogo
   valore: Corridonia (MC), contrada Cigliano
 - voce: Anni
   valore: 2013–2017
 - voce: Stato
   valore: Realizzato
+- voce: Committente
+  valore: Fraternità San Carlo Borromeo
 - voce: Ruolo dello studio
   valore: Progetto e direzione lavori
 - voce: Con

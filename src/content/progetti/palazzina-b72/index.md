@@ -16,22 +16,22 @@ carosello:
 - ./img/hero-est091.jpg
 - ./img/hero-est0102.jpg
 dati:
-- voce: Committente
-  valore: Privato (condominio)
 - voce: Luogo
   valore: Macerata, via Bartolini 72
 - voce: Anni
   valore: 2016–2026
 - voce: Stato
   valore: Realizzato
+- voce: Committente
+  valore: Privato (condominio)
 - voce: Ruolo dello studio
   valore: Progetto e direzione lavori
 - voce: Con
   valore: ing. Gabriele Magrini (strutture) · ing. Franco Marini (impianti) · geol. Massimo Carnevali · ing. Chiara Antolini (collaudo)
-- voce: Importo dei lavori
-  valore: 4.700.000 €
 - voce: Impresa
   valore: Sardellini Costruzioni S.r.l.
+- voce: Importo dei lavori
+  valore: 4.700.000 €
 - voce: Volume
   valore: circa 6.000 m³
 - voce: Unità
