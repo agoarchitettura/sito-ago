@@ -21,6 +21,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: withastro/action@v3
+        with:
+          node-version: 24
         env:
           # Variabili del repository (Settings → Secrets and variables → Actions → Variables).
           # Per la prova: SITE_URL=https://agoarchitettura.github.io  SITE_BASE=/sito-ago  PUBLIC_NOINDEX=1
