@@ -52,7 +52,7 @@ sezioni:
 - titolo: Il paesaggio
   testo:
   - Davanti al nuovo edificio, la piscina (4 × 12 m) è una lunga lama d'acqua tra le capanne e la casa colonica. Intorno, filari di ulivi, siepi di lavanda e pavimentazione in cotto. Il nuovo non sovrasta la casa antica, le sta accanto, a distanza, e il paesaggio resta leggibile.
-  - Lo studio di fattibilità è una riflessione sul tema del new rural già in parte sviluppato a Casa San Giuseppe e ripreso poi in Casa Canovari. Il progetto non è stato sviluppato oltre questa fase.
+  - Lo studio di fattibilità è una riflessione sul tema del new rural già in parte sviluppato a Casa San Giuseppe e ripreso poi in Casa la Memorata. Il progetto non è stato sviluppato oltre questa fase.
   tuttoschermo:
   - img: ./img/f3-vista-complessiva.png
     didascalia: Il nuovo edificio, la piscina e la casa colonica nel paesaggio · rendering di studio, non fotografia
