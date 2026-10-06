@@ -243,6 +243,7 @@ main{display:block}
 .grafico.struttura .leg strong{display:block;font-family:var(--titoli);font-weight:500;font-size:1.1rem;color:var(--inchiostro)}
 .grafico.struttura .gcap{font-size:.8125rem;color:var(--grafite);margin:1rem 0 0}
 @media(min-width:48rem){.grafico.struttura{grid-template-columns:minmax(0,24rem) minmax(0,1fr);align-items:center}}
+.grafico.risalita{max-width:56rem}
 /* grafico energia */
 .grafico.energia{max-width:56rem}
 .flusso{display:grid;grid-template-columns:minmax(0,1fr);gap:.75rem;padding:1.1rem 0;border-top:1px solid var(--linea)}

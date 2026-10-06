@@ -3,8 +3,6 @@ import { u } from '../../lib/url';
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Foto from '../../components/Foto.astro';
-import struttura from '../../components/grafico-struttura.html?raw';
-import energia from '../../components/grafico-energia.html?raw';
 
 export async function getStaticPaths() {
   const tutti = (await getCollection('progetti')).sort((a, b) => b.data.ordine - a.data.ordine);
@@ -15,7 +13,10 @@ export async function getStaticPaths() {
 }
 const { p, prec, succ } = Astro.props;
 const d = p.data;
-const grafici: Record<string, string> = { struttura, energia };
+// grafici in src/components/grafico-<nome>.html, richiamati da «extra: <nome>» nella scheda
+const grafici: Record<string, string> = Object.fromEntries(
+  Object.entries(import.meta.glob('../../components/grafico-*.html', { query: '?raw', import: 'default', eager: true }))
+    .map(([f, html]) => [f.replace(/^.*grafico-|\.html$/g, ''), html as string]));
 ---
 <Base titolo={d.titolo} descrizione={d.sintesi}>
   <section class="scheda-hero">
