@@ -57,7 +57,7 @@ sez=[
 ]
 meta={"titolo":"Piazza Vittorio Emanuele II","sottotitolo":"Riqualificazione della piazza e di un tratto di via Leopardi, Belforte del Chienti",
  "sintesi":"Un'ellisse e un cerchio disegnati dai gelsi, resi finalmente leggibili: un anfiteatro verde, un piccolo pantheon, selciato di pietra e mattoni fatti a mano.",
- "categoria":"Arredo urbano e light design","stato":"Realizzato","luogo":"Belforte del Chienti","anni":"2006–2007","committente":"Comune di Belforte del Chienti","in_evidenza":False,"ordine":30,
+ "categoria":"Arredo urbano e light design","stato":"Realizzato","luogo":"Belforte del Chienti","anni":"2006–2007","committente":"Comune di Belforte del Chienti","in_evidenza":True,"ordine":30,
  "copertina":"./img/pu2-copertina.jpg","apertura":"./img/pu2-01.jpg","carosello":["./img/pu2-01.jpg","./img/pu2-04.jpg"],
  "dati":[{"voce":"Luogo","valore":"Belforte del Chienti (MC), centro storico"},{"voce":"Anni","valore":"2006–2007"},{"voce":"Stato","valore":"Realizzato"},{"voce":"Committente","valore":"Comune di Belforte del Chienti"},
   {"voce":"Ruolo dello studio","valore":"Progetto esecutivo (capogruppo) e direzione lavori"},{"voce":"Con","valore":"arch. Antonio Pagnanelli (gruppo di progettazione)"},{"voce":"Responsabile del procedimento","valore":"geom. Mauro Paglialunga"},

@@ -7,7 +7,7 @@ stato: Realizzato
 luogo: Belforte del Chienti
 anni: 2006–2007
 committente: Comune di Belforte del Chienti
-in_evidenza: false
+in_evidenza: true
 ordine: 30
 copertina: ./img/pu2-copertina.jpg
 apertura: ./img/pu2-01.jpg
