@@ -256,3 +256,8 @@ main{display:block}
 .freccia{align-self:center;color:var(--ottone);font-family:var(--mono);font-size:1.1rem}
 @media(max-width:47.99rem){.freccia{flex-basis:100%;text-align:center;transform:rotate(90deg);line-height:1;height:1rem}}
 .grafico.energia figcaption{border-top:1px solid var(--linea);padding-top:.8rem;margin-top:0}
+
+/* foto verticali nelle serie: non vanno tagliate in orizzontale */
+.galleria{align-items:start}
+.figure-tec{align-items:start}
+.galleria .ver img,.figure-tec .ver img{aspect-ratio:4/5}
