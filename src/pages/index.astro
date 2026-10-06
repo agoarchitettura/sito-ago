@@ -6,7 +6,7 @@ import Foto from '../components/Foto.astro';
 import ProgettoCard from '../components/ProgettoCard.astro';
 import { leggi } from '../lib/dati';
 const h = leggi('home');
-const progetti = (await getCollection('progetti')).sort((a, b) => a.data.ordine - b.data.ordine);
+const progetti = (await getCollection('progetti')).sort((a, b) => b.data.ordine - a.data.ordine);
 const evidenza = progetti.filter((p) => p.data.in_evidenza).slice(0, 5);
 const diapositive = progetti.flatMap((p) => p.data.carosello.map((img) => ({ img, p })));
 ---

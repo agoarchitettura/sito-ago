@@ -23,7 +23,8 @@ const progetti = defineCollection({
       anni: z.string(),
       committente: z.string(),
       in_evidenza: z.boolean().default(false),
-      ordine: z.number().default(100),
+      // numero di commessa (non mostrato): i progetti sono ordinati dal più recente (numero più alto) al più vecchio
+      ordine: z.number().default(0),
       copertina: image(),
       apertura: image(),
       carosello: z.array(image()).default([]),

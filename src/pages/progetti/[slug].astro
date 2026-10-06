@@ -7,7 +7,7 @@ import struttura from '../../components/grafico-struttura.html?raw';
 import energia from '../../components/grafico-energia.html?raw';
 
 export async function getStaticPaths() {
-  const tutti = (await getCollection('progetti')).sort((a, b) => a.data.ordine - b.data.ordine);
+  const tutti = (await getCollection('progetti')).sort((a, b) => b.data.ordine - a.data.ordine);
   return tutti.map((p, i) => ({
     params: { slug: p.id },
     props: { p, prec: tutti[(i + tutti.length - 1) % tutti.length], succ: tutti[(i + 1) % tutti.length] },
