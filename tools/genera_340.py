@@ -76,11 +76,11 @@ sez=[
 cron=[("14 dicembre 2023","Gli scavi","Lo scavo e i casseri in legno all'inizio dei lavori.","pu-cantiere-20231214"),
  ("22 marzo 2024","La pietra","La posa della pavimentazione in pietra, con gli scavi ancora aperti.","pu-cantiere-20240322"),
  ("13 giugno 2024","Il disegno del suolo","La pavimentazione in pietra con il suo disegno a ventaglio.","pu-cantiere-20240613"),
- ("21 ottobre 2024","Le scale","La scalinata in pietra arenaria e laterizio.","pu-cantiere-20241021"),
+ ("21 ottobre 2024","La scalinata","La scalinata in pietra arenaria e laterizio.","pu-cantiere-20241021"),
  ("18 aprile 2025","Il verde","Lo spazio verde ancora da sistemare, al termine dei lavori.","pu-cantiere-20250418")]
 meta={"titolo":"Piazza Umberto I","sottotitolo":"Riqualificazione della piazza e delle vie del centro storico, Belforte del Chienti",
  "sintesi":"La piazza storica di Belforte del Chienti ricostruita sulle tracce degli edifici demoliti: pietra arenaria, laterizi fatti a mano, la Fontana dei Fiumi.",
- "categoria":"Arredo urbano e light design","stato":"Realizzato","luogo":"Belforte del Chienti","anni":"2022–2025","committente":"Comune di Belforte del Chienti","in_evidenza":True,"ordine":2.5,
+ "categoria":"Arredo urbano e light design","stato":"Realizzato","luogo":"Belforte del Chienti","anni":"2022–2025","committente":"Comune di Belforte del Chienti","in_evidenza":True,"ordine":340,
  "copertina":"./img/pu-getti.jpg","apertura":"./img/pu-realizzato-01.jpg","carosello":["./img/pu-realizzato-01.jpg","./img/pu-getti.jpg"],
  "dati":[{"voce":"Luogo","valore":"Belforte del Chienti (MC), centro storico"},{"voce":"Anni","valore":"2022–2025"},{"voce":"Stato","valore":"Realizzato"},{"voce":"Committente","valore":"Comune di Belforte del Chienti"},
   {"voce":"Ruolo dello studio","valore":"Progetto definitivo ed esecutivo, direzione lavori, CAM e coordinamento della sicurezza"},{"voce":"Responsabile del procedimento","valore":"geom. Mauro Paglialunga"},

@@ -8,7 +8,7 @@ luogo: Belforte del Chienti
 anni: 2022–2025
 committente: Comune di Belforte del Chienti
 in_evidenza: true
-ordine: 2.5
+ordine: 340
 copertina: ./img/pu-getti.jpg
 apertura: ./img/pu-realizzato-01.jpg
 carosello:
@@ -27,6 +27,8 @@ dati:
   valore: Progetto definitivo ed esecutivo, direzione lavori, CAM e coordinamento della sicurezza
 - voce: Responsabile del procedimento
   valore: geom. Mauro Paglialunga
+- voce: Imprese esecutrici
+  valore: R.C.R. Restauri S.r.l. · GSM Services S.r.l.
 - voce: Importo dei lavori
   valore: 890.290,15 €
 - voce: Finanziamento
@@ -112,7 +114,7 @@ cronologia:
   testo: La pavimentazione in pietra con il suo disegno a ventaglio.
   img: ./img/pu-cantiere-20240613.jpg
 - data: 21 ottobre 2024
-  titolo: Le scale
+  titolo: La scalinata
   testo: La scalinata in pietra arenaria e laterizio.
   img: ./img/pu-cantiere-20241021.jpg
 - data: 18 aprile 2025

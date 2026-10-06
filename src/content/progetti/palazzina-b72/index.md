@@ -8,7 +8,7 @@ luogo: Macerata
 anni: 2016–2026
 committente: Condominio
 in_evidenza: true
-ordine: 1
+ordine: 160
 copertina: ./img/hero-est001.jpg
 apertura: ./img/hero-est091.jpg
 carosello:

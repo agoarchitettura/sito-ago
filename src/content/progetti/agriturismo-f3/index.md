@@ -8,7 +8,7 @@ luogo: Montecassiano
 anni: '2023'
 committente: Privato
 in_evidenza: false
-ordine: 3
+ordine: 355
 copertina: ./img/f3-vista-complessiva.png
 apertura: ./img/f3-frontale-02.jpg
 carosello:

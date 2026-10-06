@@ -8,7 +8,7 @@ luogo: Corridonia
 anni: 2013–2017
 committente: Fraternità San Carlo Borromeo
 in_evidenza: true
-ordine: 2
+ordine: 123
 copertina: ./img/sg-hero-dsc.jpg
 apertura: ./img/sg-hero-0030.jpg
 carosello:
