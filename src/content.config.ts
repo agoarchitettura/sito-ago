@@ -37,11 +37,12 @@ const progetti = defineCollection({
         tabella: z.array(voce).optional(),
         nota_tabella: z.string().optional(),
         inglese: z.array(z.string()).optional(),
-        extra: z.enum(['struttura', 'energia', 'cronologia']).optional(),
+        extra: z.enum(['struttura', 'energia', 'cronologia', 'superfici']).optional(),
       })),
       cronologia: z.array(z.object({
         data: z.string(), titolo: z.string(), testo: z.string(), img: image().optional(),
       })).default([]),
+      superfici: z.array(z.object({ voce: z.string(), mq: z.number() })).default([]),
       disegni: z.array(foto).default([]),
       galleria: z.array(foto).default([]),
     });

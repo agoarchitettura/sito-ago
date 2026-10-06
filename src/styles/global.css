@@ -261,3 +261,14 @@ main{display:block}
 .galleria{align-items:start}
 .figure-tec{align-items:start}
 .galleria .ver img,.figure-tec .ver img{aspect-ratio:4/5}
+
+/* grafico: superfici di progetto */
+.grafico.superfici{max-width:56rem}
+.barre{list-style:none;margin:1rem 0 0;padding:0;border-top:1px solid var(--linea)}
+.barre li{display:grid;grid-template-columns:minmax(0,1fr);gap:.35rem;padding:.8rem 0;border-bottom:1px solid var(--linea)}
+@media(min-width:48rem){.barre li{grid-template-columns:minmax(0,15rem) minmax(0,1fr) 6.5rem;gap:1.25rem;align-items:center}}
+.b-voce{font-size:.9375rem}
+.b-pista{display:block;height:.7rem;background:var(--carta2)}
+.b-barra{display:block;height:100%;background:var(--ottone)}
+.b-mq{font-family:var(--mono);font-size:.8125rem;color:var(--grafite);text-align:left}
+@media(min-width:48rem){.b-mq{text-align:right}}

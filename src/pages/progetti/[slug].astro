@@ -40,7 +40,12 @@ const grafici: Record<string, string> = { struttura, energia };
           </div>
         </div>
         {s.tuttoschermo.map((f) => <figure class="fb"><Foto img={f.img} alt={f.didascalia} didascalia={f.didascalia} sizes="100vw" larghezze={[800, 1200, 1600, 2200]} /><figcaption>{f.didascalia}</figcaption></figure>)}
-        {s.extra && s.extra !== 'cronologia' && <div class="extra"><Fragment set:html={grafici[s.extra]} /></div>}
+        {s.extra && s.extra !== 'cronologia' && s.extra !== 'superfici' && <div class="extra"><Fragment set:html={grafici[s.extra]} /></div>}
+        {s.extra === 'superfici' && d.superfici.length > 0 && (
+          <div class="extra"><figure class="grafico superfici"><p class="etichetta">Le superfici di progetto</p>
+            <ul class="barre">{d.superfici.map((x) => <li><span class="b-voce">{x.voce}</span><span class="b-pista"><span class="b-barra" style={`width:${(x.mq / Math.max(...d.superfici.map((y) => y.mq))) * 100}%`}></span></span><span class="b-mq">{x.mq.toLocaleString('it-IT', { minimumFractionDigits: 2 })} m²</span></li>)}</ul>
+            <figcaption>Totale {d.superfici.reduce((a, x) => a + x.mq, 0).toLocaleString('it-IT', { minimumFractionDigits: 2 })} m² di nuove superfici.</figcaption></figure></div>
+        )}
         {s.extra === 'cronologia' && d.cronologia.length > 0 && (
           <div class="extra"><div class="grafico cronologia"><p class="etichetta">Il cantiere nel tempo</p>
             <ol class="cron">{d.cronologia.map((c) => <li><span class="data">{c.data}</span>{c.img && <Foto img={c.img} alt={c.titolo} didascalia={`${c.titolo}: ${c.testo}`} sizes="(min-width: 56rem) 30vw, 100vw" />}<h3>{c.titolo}</h3><p>{c.testo}</p></li>)}</ol></div></div>
