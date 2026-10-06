@@ -5,7 +5,7 @@ import Base from '../../layouts/Base.astro';
 import Foto from '../../components/Foto.astro';
 import ProgettoCard from '../../components/ProgettoCard.astro';
 const progetti = (await getCollection('progetti')).sort((a, b) => b.data.ordine - a.data.ordine);
-const primo = progetti.find((p) => p.data.in_evidenza) ?? progetti[0];
+const primo = progetti[0]; // il più recente (numero di commessa più alto)
 const resto = progetti.filter((p) => p !== primo);
 const categorie = [...new Set(progetti.map((p) => p.data.categoria))];
 ---
