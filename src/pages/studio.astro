@@ -1,4 +1,5 @@
 ---
+import { u } from '../lib/url';
 import Base from '../layouts/Base.astro';
 import { leggi } from '../lib/dati';
 const s = leggi('studio'); const sito = leggi('sito');
@@ -8,7 +9,7 @@ const s = leggi('studio'); const sito = leggi('sito');
     <div class="titolo-pagina"><p class="etichetta">Studio</p><h1>{s.titolo}</h1><p class="corpo largo">{s.introduzione}</p></div>
     <div class="sezione" style="border-top:0;padding-top:1rem">
       <p class="etichetta">Le persone</p>
-      <div class="soci">{s.soci.map((p: any) => <div class="socio"><h3>{p.nome}</h3><p>{p.testo}</p></div>)}</div>
+      <div class="soci">{s.soci.map((p: any) => <div class="socio">{p.foto ? <div class="foto reale"><img src={u(p.foto)} alt={p.nome} width="800" height="1000" loading="lazy" decoding="async" /></div> : <div class="foto reale senza" aria-hidden="true"><span>{p.nome.split(' ').map((x: string) => x[0]).join('')}</span></div>}<h3>{p.nome}</h3><p>{p.testo}</p></div>)}</div>
       <p class="corpo" style="margin-top:1.75rem;font-size:.875rem">{s.nota_soci}</p>
     </div>
     <div class="sezione">

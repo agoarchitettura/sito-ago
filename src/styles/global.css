@@ -277,3 +277,8 @@ main{display:block}
 /* etichette del restauro: il marroncino (ottone) della palette */
 .chip.cat[data-cat="Restauro"]{background:var(--ottone);color:#ffffff;-webkit-text-fill-color:#ffffff}
 .scheda-hero .etichetta[data-cat="Restauro"]{color:var(--ottone)!important}
+
+/* ritratti dei soci */
+.socio .foto img{display:block;width:100%;height:100%;object-fit:cover}
+.socio .foto.senza{display:flex;align-items:center;justify-content:center;background:var(--carta2);border:1px solid var(--linea)}
+.socio .foto.senza span{font-family:var(--titoli);font-size:3rem;color:var(--ottone);letter-spacing:.05em}

@@ -188,6 +188,7 @@ collections:
             summary: '{{fields.nome}}'
             fields:
               - {name: nome, label: Nome, widget: string}
+              - {name: foto, label: Ritratto (verticale 4:5), widget: image, required: false, media_folder: /public/img-soci, public_folder: /img-soci}
               - {name: testo, label: Testo, widget: text}
           - {name: nota_soci, label: Nota sotto i soci, widget: text}
           - {name: metodo_introduzione, label: Introduzione al metodo, widget: text}
