@@ -22,7 +22,7 @@ const grafici: Record<string, string> = Object.fromEntries(
   <section class="scheda-hero">
     <div class="foto reale"><Foto img={d.apertura} alt={d.titolo} sizes="100vw" larghezze={[800, 1200, 1600, 2200]} caricamento="eager" zoom={false} /></div>
     <div class="wrap">
-      <p class="etichetta" style="color:var(--su-scuro)">{d.categoria}</p><h1>{d.titolo}</h1><p style="margin:0;color:var(--su-scuro)">{d.sottotitolo}</p>
+      <p class="etichetta" data-cat={d.categoria} style="color:var(--su-scuro)">{d.categoria}</p><h1>{d.titolo}</h1><p style="margin:0;color:var(--su-scuro)">{d.sottotitolo}</p>
     </div>
   </section>
   <div class="wrap">

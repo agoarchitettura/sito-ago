@@ -2,6 +2,9 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
+// Il pannello di modifica salva i percorsi delle immagini senza «./»: lo aggiungiamo qui.
+const rel = (v: unknown) => (typeof v === 'string' && !v.startsWith('.') && !v.startsWith('/') ? `./${v}` : v);
+
 const voce = z.object({ voce: z.string(), valore: z.string() });
 
 export const CATEGORIE = [
@@ -12,7 +15,8 @@ export const CATEGORIE = [
 const progetti = defineCollection({
   loader: glob({ pattern: '*/index.md', base: './src/content/progetti' }),
   schema: ({ image }) => {
-    const foto = z.object({ img: image(), didascalia: z.string() });
+    const img = () => z.preprocess(rel, image());
+    const foto = z.object({ img: img(), didascalia: z.string() });
     return z.object({
       titolo: z.string(),
       sottotitolo: z.string(),
@@ -25,9 +29,9 @@ const progetti = defineCollection({
       in_evidenza: z.boolean().default(false),
       // numero di commessa (non mostrato): i progetti sono ordinati dal più recente (numero più alto) al più vecchio
       ordine: z.number().default(0),
-      copertina: image(),
-      apertura: image(),
-      carosello: z.array(image()).default([]),
+      copertina: img(),
+      apertura: img(),
+      carosello: z.array(img()).default([]),
       dati: z.array(voce),
       sezioni: z.array(z.object({
         titolo: z.string(),
@@ -42,7 +46,7 @@ const progetti = defineCollection({
         extra: z.string().optional(),
       })),
       cronologia: z.array(z.object({
-        data: z.string(), titolo: z.string(), testo: z.string(), img: image().optional(),
+        data: z.string(), titolo: z.string(), testo: z.string(), img: img().optional(),
       })).default([]),
       superfici: z.array(z.object({ voce: z.string(), mq: z.number() })).default([]),
       disegni: z.array(foto).default([]),

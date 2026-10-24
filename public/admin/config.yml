@@ -1,0 +1,228 @@
+# Pannello di modifica del sito (Sveltia CMS). Ogni «Salva» scrive nel repository
+# agoarchitettura/sito-ago, ramo main: il sito si ricostruisce da solo in 2–4 minuti.
+backend:
+  name: github
+  repo: agoarchitettura/sito-ago
+  branch: main
+
+locale: it
+site_url: https://www.ago.archi
+display_url: https://www.ago.archi
+logo_url: https://www.ago.archi/favicon.svg
+
+# Immagini non legate a una scheda (non usate: ogni scheda ha la sua cartella img/)
+media_folder: public/media
+public_folder: /media
+
+collections:
+  - name: progetti
+    label: Progetti
+    label_singular: Progetto
+    folder: src/content/progetti
+    path: '{{slug}}/index'
+    extension: md
+    format: yaml-frontmatter
+    create: true
+    delete: true
+    identifier_field: titolo
+    media_folder: img
+    public_folder: ./img
+    summary: '{{ordine}} · {{titolo}} ({{categoria}}, {{stato}})'
+    sortable_fields: [ordine, titolo]
+    view_groups:
+      - label: Categoria
+        field: categoria
+    fields:
+      - {name: titolo, label: Titolo, widget: string, hint: "Il nome del progetto sul sito. Mai il nome di un committente privato."}
+      - {name: sottotitolo, label: Sottotitolo, widget: string}
+      - {name: sintesi, label: Sintesi, widget: text, hint: "Una o due frasi: compare nelle anteprime e nei motori di ricerca."}
+      - {name: categoria, label: Categoria, widget: select, options: [Restauro, Nuova edificazione, Arredo urbano e light design, Architettura rurale, New rural, Sport, Interni]}
+      - {name: stato, label: Stato, widget: select, options: [Progetto, In costruzione, Realizzato]}
+      - {name: luogo, label: Luogo, widget: string}
+      - {name: anni, label: Anni, widget: string, hint: "Es. 2018–2026 oppure Dal 2021"}
+      - {name: committente, label: Committente, widget: string, hint: "Enti pubblici con il nome; privati: «Privato»."}
+      - {name: in_evidenza, label: In evidenza nella Home, widget: boolean, default: false, required: false}
+      - {name: ordine, label: Numero di commessa, widget: number, value_type: int, hint: "Non si vede sul sito: serve a ordinare i progetti, dal numero più alto (in cima) al più basso."}
+      - {name: copertina, label: Immagine di copertina (anteprima, 4:3), widget: image}
+      - {name: apertura, label: Immagine di apertura della scheda (larga), widget: image}
+      - name: carosello
+        label: Immagini nel carosello della Home
+        widget: list
+        required: false
+        field: {name: img, label: Immagine, widget: image}
+      - name: dati
+        label: Dati della scheda (luogo, anni, ruolo, importo…)
+        widget: list
+        fields:
+          - {name: voce, label: Voce, widget: string}
+          - {name: valore, label: Valore, widget: text}
+      - name: sezioni
+        label: Sezioni del racconto
+        widget: list
+        summary: '{{fields.titolo}}'
+        fields:
+          - {name: titolo, label: Titolo della sezione, widget: string}
+          - name: testo
+            label: Paragrafi
+            widget: list
+            field: {name: paragrafo, label: Paragrafo, widget: text}
+          - name: figure
+            label: Foto in serie (con didascalia)
+            widget: list
+            required: false
+            summary: '{{fields.didascalia}}'
+            fields:
+              - {name: img, label: Immagine, widget: image}
+              - {name: didascalia, label: Didascalia, widget: string}
+          - name: schizzi
+            label: Schizzi e disegni a mano (sezione propria)
+            widget: list
+            required: false
+            summary: '{{fields.didascalia}}'
+            fields:
+              - {name: img, label: Immagine, widget: image}
+              - {name: didascalia, label: Didascalia, widget: string}
+          - name: tuttoschermo
+            label: Immagini a larghezza piena
+            widget: list
+            required: false
+            summary: '{{fields.didascalia}}'
+            fields:
+              - {name: img, label: Immagine, widget: image}
+              - {name: didascalia, label: Didascalia, widget: string}
+          - name: tabella
+            label: Tabella (voce / descrizione)
+            widget: list
+            required: false
+            fields:
+              - {name: voce, label: Voce, widget: string}
+              - {name: valore, label: Descrizione, widget: text}
+          - {name: nota_tabella, label: Nota sotto la tabella, widget: string, required: false}
+          - name: inglese
+            label: Testo in inglese (paragrafi)
+            widget: list
+            required: false
+            field: {name: paragrafo, label: Paragrafo, widget: text}
+          - {name: extra, label: Grafico o cronologia, widget: string, required: false, hint: "Lasciare vuoto se non serve. «cronologia» mostra la cronologia della scheda; gli altri nomi (es. immacolata-sospensione) sono grafici preparati a parte: non inventarne di nuovi."}
+      - name: cronologia
+        label: Cronologia
+        widget: list
+        required: false
+        summary: '{{fields.data}} · {{fields.titolo}}'
+        fields:
+          - {name: data, label: Data, widget: string}
+          - {name: titolo, label: Titolo, widget: string}
+          - {name: testo, label: Testo, widget: text}
+          - {name: img, label: Immagine, widget: image, required: false}
+      - name: superfici
+        label: Superfici (m²)
+        widget: list
+        required: false
+        fields:
+          - {name: voce, label: Voce, widget: string}
+          - {name: mq, label: m², widget: number, value_type: float}
+      - name: disegni
+        label: Disegni (galleria a fine scheda)
+        widget: list
+        required: false
+        fields:
+          - {name: img, label: Immagine, widget: image}
+          - {name: didascalia, label: Didascalia, widget: string}
+      - name: galleria
+        label: Galleria fotografica
+        widget: list
+        required: false
+        fields:
+          - {name: img, label: Immagine, widget: image}
+          - {name: didascalia, label: Didascalia, widget: string}
+
+  - name: pagine
+    label: Pagine e testi
+    files:
+      - name: home
+        label: Home
+        file: src/data/home.yaml
+        fields:
+          - {name: sottotitolo, label: Frase sotto il titolo, widget: text}
+          - {name: fatti, label: Riga dei fatti, widget: string}
+          - name: aree
+            label: Le tre aree
+            widget: list
+            fields:
+              - {name: titolo, label: Titolo, widget: string}
+              - {name: testo, label: Testo, widget: text}
+          - {name: chiusura_titolo, label: Titolo di chiusura, widget: string}
+          - {name: chiusura_testo, label: Testo di chiusura, widget: text}
+      - name: servizi
+        label: Servizi
+        file: src/data/servizi.yaml
+        fields:
+          - {name: titolo, label: Titolo, widget: string}
+          - {name: introduzione, label: Introduzione, widget: text}
+          - name: aree
+            label: Aree di servizio
+            widget: list
+            summary: '{{fields.titolo}}'
+            fields:
+              - {name: etichetta, label: Etichetta sopra il titolo, widget: string, required: false}
+              - {name: titolo, label: Titolo, widget: string}
+              - name: testo
+                label: Paragrafi
+                widget: list
+                required: false
+                field: {name: paragrafo, label: Paragrafo, widget: text}
+              - name: elenco
+                label: Elenco puntato
+                widget: list
+                required: false
+                field: {name: voce, label: Voce, widget: string}
+      - name: studio
+        label: Studio
+        file: src/data/studio.yaml
+        fields:
+          - {name: titolo, label: Titolo, widget: string}
+          - {name: introduzione, label: Introduzione, widget: text}
+          - name: soci
+            label: Soci
+            widget: list
+            summary: '{{fields.nome}}'
+            fields:
+              - {name: nome, label: Nome, widget: string}
+              - {name: testo, label: Testo, widget: text}
+          - {name: nota_soci, label: Nota sotto i soci, widget: text}
+          - {name: metodo_introduzione, label: Introduzione al metodo, widget: text}
+          - name: metodo
+            label: Metodo
+            widget: list
+            summary: '{{fields.titolo}}'
+            fields:
+              - {name: titolo, label: Titolo, widget: string}
+              - {name: testo, label: Testo, widget: text}
+          - {name: cultura, label: Cultura e ricerca, widget: text}
+      - name: contatti
+        label: Contatti
+        file: src/data/contatti.yaml
+        fields:
+          - {name: titolo, label: Titolo, widget: string}
+          - {name: introduzione, label: Introduzione, widget: text}
+          - {name: lavora_con_noi, label: Lavora con noi, widget: text}
+      - name: sito
+        label: Dati dello studio (indirizzo, telefono, motto…)
+        file: src/data/sito.yaml
+        fields:
+          - {name: nome, label: Nome, widget: string}
+          - {name: ragione_sociale, label: Ragione sociale, widget: string}
+          - {name: motto, label: Motto, widget: string}
+          - {name: fondazione, label: Anno di fondazione, widget: number, value_type: int}
+          - {name: indirizzo, label: Indirizzo, widget: string}
+          - {name: cap, label: CAP, widget: string}
+          - {name: citta, label: Città, widget: string}
+          - {name: provincia, label: Provincia, widget: string}
+          - {name: telefono, label: Telefono, widget: string}
+          - {name: telefono_internazionale, label: Telefono con prefisso internazionale, widget: string}
+          - {name: email, label: Email, widget: string}
+          - {name: pec, label: PEC, widget: string}
+          - {name: piva, label: Partita IVA, widget: string}
+          - {name: rea, label: REA, widget: string}
+          - {name: ordine, label: Iscrizione all'Ordine, widget: string}
+          - {name: diario_url, label: Indirizzo del diario (Substack), widget: string, required: false, hint: "Quando è compilato compare il pulsante «Leggi il diario»."}

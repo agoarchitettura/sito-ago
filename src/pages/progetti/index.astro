@@ -14,7 +14,7 @@ const categorie = [...new Set(progetti.map((p) => p.data.categoria))];
     <div class="titolo-pagina"><p class="etichetta">Progetti</p><h1>Opere e progetti</h1><p class="corpo largo">Una scelta dei lavori dello studio. Ogni scheda racconta l'intervento, chi ci ha lavorato e come è andata.</p></div>
     {primo && (
       <a class="in-evidenza" href={u(`/progetti/${primo.id}/`)}>
-        <div class="foto reale"><Foto img={primo.data.copertina} alt={primo.data.titolo} sizes="(min-width: 56rem) 60vw, 100vw" zoom={false} caricamento="eager" /><span class="chip cat">{primo.data.categoria}</span><span class="chip st">{primo.data.stato}</span></div>
+        <div class="foto reale"><Foto img={primo.data.copertina} alt={primo.data.titolo} sizes="(min-width: 56rem) 60vw, 100vw" zoom={false} caricamento="eager" /><span class="chip cat" data-cat={primo.data.categoria}>{primo.data.categoria}</span><span class="chip st">{primo.data.stato}</span></div>
         <div><p class="etichetta">In evidenza</p><h2>{primo.data.titolo}</h2><p class="corpo">{primo.data.sintesi}</p>
           <p class="meta"><span>{primo.data.committente}</span><span>{primo.data.luogo}</span><span>{primo.data.anni}</span></p><span class="vai">Scheda del progetto →</span></div>
       </a>

@@ -1,4 +1,4 @@
 ---
 const { categoria, stato } = Astro.props;
 ---
-<span class="chip cat">{categoria}</span><span class="chip st">{stato}</span>
+<span class="chip cat" data-cat={categoria}>{categoria}</span><span class="chip st">{stato}</span>
