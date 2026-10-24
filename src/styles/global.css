@@ -275,5 +275,5 @@ main{display:block}
 @media(min-width:48rem){.b-mq{text-align:right}}
 
 /* etichette del restauro: il marroncino (ottone) della palette */
-.chip.cat[data-cat="Restauro"]{background:var(--ottone);color:var(--inchiostro);-webkit-text-fill-color:var(--inchiostro)}
+.chip.cat[data-cat="Restauro"]{background:var(--ottone);color:#ffffff;-webkit-text-fill-color:#ffffff}
 .scheda-hero .etichetta[data-cat="Restauro"]{color:var(--ottone)!important}
